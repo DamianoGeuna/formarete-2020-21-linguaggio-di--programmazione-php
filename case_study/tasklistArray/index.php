@@ -11,7 +11,7 @@ $taskList = JSONReader('./dataset/TaskList.json');
 
 if(isset($_GET['searchText']))
 {
-    $searchtext = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
+    $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
 }
 else
 {
@@ -32,7 +32,7 @@ else
 </head>
 <body>
     <form action="index.php">
-        <input type="text" value="<?= $searchtext ?>" name="searchText">
+        <input type="text" value="<?= $searchText ?>" name="searchText">
         <button type="submit">cerca</button>
     </form>
     <ul>
