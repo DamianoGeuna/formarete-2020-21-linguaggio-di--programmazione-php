@@ -1,3 +1,14 @@
+<?php
+// Carico le dipendenze, quello che mi serve per elaborare script finale (Tipo Bootstrap e Jquery)
+require "./lib/JSONReader.php";
+
+// Model: in questo caso è JSONReader(parte che si occupa di recuperare/gestire i dati dell'applicazione)
+// controller: parte che si occupa di gestire le altre due parti, la vista e il model
+$taskList = JSONReader('./dataset/TaskList.json');
+
+?>
+
+<!-- (vista) visualizzazione / intercetta le azione dell'utente -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +24,25 @@
         <button type="submit">cerca</button>
     </form>
     <ul>
-        <li class="tasklist-item tasklist-item-progress">latte <b>progress</b></li>
+        <?php
+        foreach ($taskList as $key => $task) { 
+            
+            $status =$task['status'];           
+            $taskName =$task['taskName'];            
+            ?>
+            
+            <li class="tasklist-item tasklist-item-<?= $status ?>">
+                <?= $taskName?>
+                <b> <?=$status?></b>
+            </li>
+
+
+        <?php } ?>
+
+        <!--
         <li class="tasklist-item tasklist-item-done">uova <b>done</b></li>
-        <li class="tasklist-item tasklist-item-todo">caffè <b>todo</b></li>
+        <li class="tasklist-item tasklist-item-todo">farina <b>todo</b></li>
+        -->
     </ul>
 </body>
 </html>
