@@ -4,7 +4,7 @@ print_r($_GET);
 
 // Carico le dipendenze, quello che mi serve per elaborare script finale (Tipo Bootstrap e Jquery)
 require "./lib/JSONReader.php";
-
+require "./lib/searchFunctions.php";
 // Model: in questo caso è JSONReader(parte che si occupa di recuperare/gestire i dati dell'applicazione)
 // controller: parte che si occupa di gestire le altre due parti, la vista e il model
 $taskList = JSONReader('./dataset/TaskList.json');
@@ -12,6 +12,7 @@ $taskList = JSONReader('./dataset/TaskList.json');
 if(isset($_GET['searchText']))
 {
     $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
+    $taskList = array_filter($taskList, searchText($searchText));
 }
 else
 {
