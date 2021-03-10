@@ -9,9 +9,13 @@ require "./lib/searchFunctions.php";
 // controller: parte che si occupa di gestire le altre due parti, la vista e il model
 $taskList = JSONReader('./dataset/TaskList.json');
 
-if(isset($_GET['searchText']))
+if(isset($_GET['searchText']) && trim($_GET['searchText']) !== '')
 {
     $searchText = trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
+
+    // var_dump($searchText, $_GET['searchText']); QUESTO PER TESTARE perchè era vuoto
+     // die(); così si ferma qui , E RICORDARSI DI TOGLIERLO
+
     $taskList = array_filter($taskList, searchText($searchText));
 }
 else
