@@ -38,9 +38,6 @@ $taskListObj = array_map(function($taskArray){
 
 }, $taskList);
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +56,7 @@ $taskListObj = array_map(function($taskArray){
             <th>Scaduta?</th>
         </tr>
         <?php
-        foreach ($taskListObj as $task) { ?> <!--Potrei sriusare TaskListObj, perchè qui non è attivo.-->
+        foreach ($taskListObj as $task) { ?> <!--Potrei riusare TaskListObj, perchè qui non è attivo.-->
             <!--qui HTML-->
             <tr>
                 <td><?php echo $task->taskName ?></td>
