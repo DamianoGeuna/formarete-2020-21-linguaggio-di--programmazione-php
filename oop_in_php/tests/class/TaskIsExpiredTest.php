@@ -15,4 +15,12 @@ foreach ($dataset as $testCase) {
     // $expected = $testCase[1]
     // $description = $testCase[2]
     list ($inputDate,$expected,$description) = $testCase;
+
+    $task = new Task();
+    $task->taskName = 'pippo';
+    $task->expirationDate = $inputDate;
+    //print_r($task);
+    $task->status = 'done';
+
+    assertEquals($expected,$task->isExpired(), $description);
 }
