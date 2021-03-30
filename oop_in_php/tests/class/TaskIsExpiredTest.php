@@ -6,8 +6,9 @@ require "./class/Task.php";
 $dataset =
 [
     ['2021-03-23',true, 'task scaduta ieri'],
-    ['2021-03-24',false,'task di oggi'],
-    ['2021-03-25',false,'task non scaduta']
+    ['2021-03-30',false,'task di oggi'],
+    ['2021-03-31',false,'task non scaduta']
+
 ];
 
 foreach ($dataset as $testCase) {

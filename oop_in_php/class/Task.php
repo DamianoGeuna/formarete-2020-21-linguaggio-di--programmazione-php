@@ -9,11 +9,19 @@ class Task
 
     public function isExpired():bool
     {
+
         //today istanza della classe DateTime
         $today = new DateTime();
         $task = new DateTime($this -> expirationDate);
 
-        return $task > $today; 
+        //è oggi
+        if($today->format('Ymd') === $task->format('Ymd')) {
+
+            return false;
+
+        }
+    
+        return $today ->getTimestamp() > $task->getTimestamp(); 
         //gettype($today); da un oggetto
         //get_class($today) DateTime
     }
